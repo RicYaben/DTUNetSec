@@ -8,7 +8,7 @@ WORKDIR $HOME
 # Install dependencies
 RUN apt update && apt install -y --no-install-recommends \
     build-essential libssl-dev libffi-dev python3-dev python3-pip python3-venv git \
-    evil-winrm iputils-ping \
+    evil-winrm iputils-ping ftp \
     && rm -rf /var/lib/apt/lists/* /tmp/*
 
 # Copy material

@@ -25,7 +25,8 @@ services:
       - NET_RAW
 
   iot:
-    image: ryaben/iot-dtunetsec:latest
+    build:
+      dockerfile: build/iot.Dockerfile
     platform: linux/amd64
     profiles: [iot]
     ports:
