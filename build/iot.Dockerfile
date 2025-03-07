@@ -15,6 +15,8 @@ RUN apk add --no-cache \
     cups \
     # Supervisor
     supervisor \
+     # Telnet & inetd
+    busybox-extras \
     && rm -rf /var/cache/apk/*
 
 # FTP 
@@ -37,6 +39,13 @@ ADD containers/iot/mosquitto/mosquitto.conf /var/conf/mosquitto.conf
 # CUPS
 COPY containers/iot/cups/cupsd.conf /etc/cups/cupsd.conf
 RUN sed -i 's/^#FileDevice No/FileDevice Yes/' /etc/cups/cups-files.conf
+
+COPY containers/iot/supervisor/telnet.conf /etc/supervisor/conf.d/telnet.conf
+RUN echo "root:root" | chpasswd
+RUN echo "pts/0" >> /etc/securetty
+EXPOSE 23
+RUN echo "FLAG{telnet_root_access}" > /root/.flag.txt
+
 
 
 # Supervisor
