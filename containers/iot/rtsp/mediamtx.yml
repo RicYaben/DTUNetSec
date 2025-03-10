@@ -1,0 +1,14 @@
+logLevel: debug
+
+rtsp: true
+rtspAddress: ":8554"   # RTSP server will listen on port 8554
+
+rtmp: false
+webrtc: false
+
+#httpPort: 0           # Disable HTTP server to avoid port conflicts
+
+paths:
+  all:
+    source: file
+    sourceFile: /var/media/rtsp/sample.mp4
